@@ -23,13 +23,20 @@ const images = ['img/01.webp', 'img/02.webp', 'img/03.webp', 'img/04.webp', 'img
 const gallery = document.getElementById('gallery');
 const prevButton = document.getElementById('prev');
 const nextButton = document.getElementById('next');
+const thumbs = document.getElementById('thumbnails');
 
 // creo le immagini direttamente da js
 for(i = 0; i < images.length; i++){
     const image = document.createElement('img');
     image.src = images[i];
     gallery.appendChild(image);
-}
+};
+// creo le miniature da js
+for(i = 0; i < images.length; i++){
+    imgMin = document.createElement('img');
+    imgMin.src = images[i];
+    thumbs.appendChild(imgMin);
+};
 
 // recupero le immagini dal dom
 const imgs = document.querySelectorAll('img');
@@ -60,4 +67,6 @@ prevButton.addEventListener('click', function(){
         currentActiveIndex = imgs.length - 1;
         imgs[currentActiveIndex].classList.add('active');
     }
-})
+});
+
+
