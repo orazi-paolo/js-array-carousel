@@ -30,42 +30,52 @@ for(i = 0; i < images.length; i++){
     const image = document.createElement('img');
     image.src = images[i];
     gallery.appendChild(image);
+    image.classList.add('item');
 };
 // creo le miniature da js
 for(i = 0; i < images.length; i++){
-    imgMin = document.createElement('img');
+    const imgMin = document.createElement('img');
     imgMin.src = images[i];
     thumbs.appendChild(imgMin);
+    imgMin.classList.add('item-min');
 };
 
 // recupero le immagini dal dom
-const imgs = document.querySelectorAll('img');
+const imgs = document.getElementsByClassName('item');
+const imgMin = document.getElementsByClassName('item-min');
 
 // rendo visibile la prima immagine da js
 let currentActiveIndex = 0;
 imgs[currentActiveIndex].classList.add('active');
+imgMin[currentActiveIndex].classList.add('active');
 
 // quando clicco sulla freccia avanti mi cambia immagine
 nextButton.addEventListener('click', function(){
     imgs[currentActiveIndex].classList.remove('active')
+    imgMin[currentActiveIndex].classList.remove('active');
     currentActiveIndex++;
     if(currentActiveIndex < images.length){
         imgs[currentActiveIndex].classList.add('active');
+        imgMin[currentActiveIndex].classList.add('active');
     }else{
         currentActiveIndex = 0;
         imgs[currentActiveIndex].classList.add('active');
+        imgMin[currentActiveIndex].classList.add('active');
     }
 });
 
 // stessa cosa pero andando indietro
 prevButton.addEventListener('click', function(){
-    imgs[currentActiveIndex].classList.remove('active')
+    imgs[currentActiveIndex].classList.remove('active');
+    imgMin[currentActiveIndex].classList.remove('active');
     currentActiveIndex--;
     if(currentActiveIndex >= 0){
         imgs[currentActiveIndex].classList.add('active');
+        imgMin[currentActiveIndex].classList.add('active');
     }else{
         currentActiveIndex = imgs.length - 1;
         imgs[currentActiveIndex].classList.add('active');
+        imgMin[currentActiveIndex].classList.add('active');
     }
 });
 
